@@ -19,6 +19,7 @@ This custom nginx image contains:
 - [zipkin-cpp-opentracing](https://github.com/rnburn/zipkin-cpp-opentracing)
 - [ModSecurity-nginx](https://github.com/SpiderLabs/ModSecurity-nginx) (only supported in x86_64)
 - [brotli](https://github.com/google/brotli) (not supported in s390x)
+- [nginx-influxdb-module](https://github.com/influxdata/nginx-influxdb-module)
 
 **How to use this image:**
 This image does provides a default configuration file with no backend servers.

@@ -34,6 +34,7 @@ export JAEGER_VERSION=0.1.0
 export MODSECURITY_VERSION=1.0.0
 export LUA_VERSION=0.10.12rc2
 export COOKIE_FLAG_VERSION=1.1.0
+export NGINX_INFLUXDB_VERSION=e2acea480768a72ceeb050314f86f7b9697768de
 
 export BUILD_PATH=/tmp/build
 
@@ -154,6 +155,9 @@ get_src 678ec4b6c2b6bba7e8000f42feb71d2bf044a44cf3909b3cbbccb708827ca7a6 \
 
 get_src 9915ad1cf0734cc5b357b0d9ea92fec94764b4bf22f4dce185cbd65feda30ec1 \
         "https://github.com/AirisX/nginx_cookie_flag_module/archive/v$COOKIE_FLAG_VERSION.tar.gz"
+
+get_src 2b99834695676da2fc37151da61423efd21dcbfb0c0f8a8f62d9834a97686913 \
+        "https://github.com/fntlnz/nginx-influxdb-module/archive/$NGINX_INFLUXDB_VERSION.tar.gz"
 
 #https://blog.cloudflare.com/optimizing-tls-over-tcp-to-reduce-latency/
 curl -sSL -o nginx__dynamic_tls_records.patch https://raw.githubusercontent.com/cloudflare/sslconfig/master/patches/nginx__1.11.5_dynamic_tls_records.patch
@@ -297,6 +301,7 @@ WITH_MODULES="--add-module=$BUILD_PATH/ngx_devel_kit-$NDK_VERSION \
   --add-module=$BUILD_PATH/nginx-http-auth-digest-$NGINX_DIGEST_AUTH \
   --add-module=$BUILD_PATH/ngx_http_substitutions_filter_module-$NGINX_SUBSTITUTIONS \
   --add-module=$BUILD_PATH/nginx_cookie_flag_module-$COOKIE_FLAG_VERSION \
+  --add-module=$BUILD_PATH/nginx-influxdb-module-$NGINX_INFLUXDB_VERSION \
   --add-dynamic-module=$BUILD_PATH/nginx-opentracing-$NGINX_OPENTRACING_VERSION/opentracing \
   --add-dynamic-module=$BUILD_PATH/nginx-opentracing-$NGINX_OPENTRACING_VERSION/jaeger \
   --add-dynamic-module=$BUILD_PATH/nginx-opentracing-$NGINX_OPENTRACING_VERSION/zipkin \
